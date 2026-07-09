@@ -15,7 +15,7 @@ st.set_page_config(
 # Custom High-End Minimalist Dashboard Style
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     
     html, body, [data-testid="stAppViewContainer"] {
         font-family: 'Inter', sans-serif;
@@ -148,7 +148,7 @@ CLEAN_ENG_TEMPLATE = f"""
     <div class="content">
         <h1 style="font-family:'Poppins'; font-size:56px; color:#0F172A; margin-bottom:15px;">{subject.upper() if subject else "TARGET ASSET"}</h1>
         <div style="width:50px; height:4px; background:#2563EB; margin-bottom:20px;"></div>
-        <p style="font-size:16px; color:#64748B; max-width:600px;">System synchronized. Click the generation trigger to compile the full multi-slide financial dossier via Claude 3.5 Sonnet.</p>
+        <p style="font-size:16px; color:#64748B; max-width:600px;">System synchronized. Click the generation trigger to compile the full multi-slide financial dossier.</p>
     </div>
     <div class="footer">
         <div><img src="data:image/png;base64,{logo_b64}" style="height:35px;"/></div>
@@ -171,8 +171,9 @@ if st.button("🚀 GENERATE INVESTMENT MEMORANDUM DECK"):
                 client = Anthropic(api_key=final_api_key)
                 prompt_payload = f"Compile a complete corporate M&A deck with detailed slides for {target_asset}. Build analytical charts, detailed market tables, and place the embedded logo correctly in the footer area."
                 
+                # Updated to use the new Claude 5 Sonnet architecture active on your account
                 message = client.messages.create(
-                    model="claude-3-5-sonnet-20241022",
+                    model="claude-5-sonnet",
                     max_tokens=4000,
                     system=SYSTEM_INSTRUCTIONS,
                     messages=[{"role": "user", "content": prompt_payload}]
