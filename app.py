@@ -172,7 +172,7 @@ if st.button("🚀 GENERATE INVESTMENT MEMORANDUM DECK"):
                 prompt_payload = f"Compile a complete corporate M&A deck with detailed slides for {target_asset}. Build analytical charts, detailed market tables, and place the embedded logo correctly in the footer area."
                 
                 message = client.messages.create(
-                    model="claude-3-5-sonnet-latest",
+                    model="claude-3-5-sonnet-20241022",
                     max_tokens=4000,
                     system=SYSTEM_INSTRUCTIONS,
                     messages=[{"role": "user", "content": prompt_payload}]
